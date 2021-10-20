@@ -1,0 +1,14 @@
+<%-include('../includes/start.ejs')%>
+<%-include('../includes/nav.ejs')%>
+
+<% if(cats) {%>
+    
+    <ul>
+        
+        <li>name: <%= cats.name%> </li>
+        <li>Description: <%= cats.description%> </li>
+        <li>CreateDate: <%= cats.createdAt%> </li>
+        <li>UpdateDate: <%= cats.updatedAt%> </li>
+    </ul>
+    <%}%>
+    <%-include('../includes/end.ejs')%>

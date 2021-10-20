@@ -1,0 +1,14 @@
+<%-include('../includes/start.ejs')%>
+<%-include('../includes/nav.ejs')%>
+<form action="/list" method="post">
+<label for="brand">Brand:</label>
+<select name="brand" id="">
+<%if (brands.length>0){%>
+    <% for (let brand of brands) {%>
+    <option value="<%=brand.name%>"><%=brand.name%></option>
+    <%}%>
+    <%}%>
+</select>
+<button type="submit">search</button>
+</form>
+    <%-include('../includes/end.ejs')%>

@@ -1,0 +1,55 @@
+<%-include('../includes/start.ejs')%>
+<%-include('../includes/nav.ejs')%>
+
+    car Page 
+     <%if (car.length>0){%>
+        <% for (let c of car) {%>
+            <ul>
+            <li>name: <%= c.title%> </li>
+        <li>Description: <%= c.description%> </li>
+        <li>Brand: <%= c.BrandName%> </li>
+        <li>Category: <%= c.CategoryName%> </li>
+        <li>Image: <%= c.image%> </li>
+        <li>NumberOfRental: <% if( c.numberOfRentals ===null ){%>0 <%}else{%><%=c.numberOfRentals%> <%}%>  </li>
+        <form action="/update/<%=c.title%>?edit=true" method="get">
+            <button type="submit">update</button>
+        </form>
+        <form action="/delete/<%=c.title%>" method="get">
+            <button type="submit">delete</button>
+        </form>
+        </ul>
+        <%}%>
+        <%} else {%>
+            No Cars!
+            <%}%>
+    <hr>
+    <form action="<%if(edit){%>/update/<%=ca.title%><%}else{%>/add<%}%>" method="post">
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="<%if(edit){%><%=ca.title%><%}%>"><br>
+        <label for="desc">Description:</label>
+        <textarea name="desc" id="" cols="30" rows="10"><%if(edit){%><%=ca.description%><%}%></textarea><br>
+        <label for="nor">NumberOfRental</label>
+        <input type="number" name="nor" id="nor" value="0"><br>
+        <label for="image">Image:</label>
+        <input type="text" name="image" value="<%if(edit){%><%=ca.image%><%}%>"><br>
+        <label for="brand">Brand:</label>
+        <select name="brand" value="<%if(edit){%><%=ca.BrandName%><%}%>">
+        <%if (brands.length>0){%>
+            <% for (let brand of brands) {%>
+            <option value="<%=brand.name%>"><%=brand.name%></option>
+            <%}%>
+            <%}%>
+        </select>   <br>
+        <label for="cat">Category:</label>
+        <select name="category" value="<%if(edit){%><%=ca.CategoryName%><%}%>">
+        <%if (cats.length>0){%>
+            <% for (let cat of cats) {%>
+            <option value="<%= cat.name %>"><%=cat.name%></option>
+            <%}%>
+            <%}%>
+        </select>   <br>
+        <button type="submit"><%if(edit){%>Edit Car<%}else{%>Add Car <%}%></button>   
+    </form>
+    <a href="/list">List Of Cars</a>
+
+    <%-include('../includes/end.ejs')%>

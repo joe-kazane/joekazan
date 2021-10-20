@@ -1,0 +1,36 @@
+<%-include('../includes/start.ejs')%>
+<%-include('../includes/nav.ejs')%>
+ brand
+ <hr>
+  <% if(brands.length>0) {%>
+    
+    <ul>
+        <% for (let brand of brands) {%>
+        <li>name: <%= brand.name%> </li>
+        <li>Description: <%= brand.description%> </li>
+        <li>CreateDate: <%= brand.createdAt%> </li>
+        <li>showNbCars: <%= brand.showNbCars%></li>
+        <li>UpdateDate: <%= brand.updatedAt%> </li>
+        <form action="/brand/details/<%=brand.name%>" method="get">
+            <button type="submit">Details</button>
+        </form>
+        <form action="/brand/update/<%=brand.name%>?edit=true" method="get">
+            <button type="submit">update</button>
+        </form>
+        <form action="/brand/delete/<%=brand.name%>" method="get">
+            <button type="submit">delete</button>
+        </form>
+        <br>
+        <%}%>
+    </ul>
+    <%} else{%>
+       <h1>no brand yet!</h1> 
+        <%}%>
+<form action="/brand/add" method="get">
+    <button type="submit">add brand</button>
+    </form>
+   
+  <a href="/brand/list">list</a>      
+            
+
+    <%-include('../includes/end.ejs')%>

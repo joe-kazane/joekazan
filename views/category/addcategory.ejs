@@ -1,0 +1,15 @@
+<%-include('../includes/start.ejs')%>
+<%-include('../includes/nav.ejs')%>
+<% if(edit){%>/category/update<%}else{%> /category/add <%}%>
+<form action="<% if(edit){%>/category/update/<%=category.name%><%}else{%>/category/add<%}%>" method="post">
+    <label for="name">category name:</label>
+    <input type="text" name="name" id="name" value="<%if(edit){%><%=category.name%><%}%>"><br><br>
+    <label for="desc">Description</label>
+    <textarea name="desc" id="desc" cols="25" rows="5"><%if(edit){%><%=category.description%><%}%></textarea><br>
+    <button type="submit"><% if(edit){ %>Update Category<%} else {%> Add Category <%}%></button>
+    </form>
+   
+        
+            
+
+    <%-include('../includes/end.ejs')%>

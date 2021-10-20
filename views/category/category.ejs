@@ -1,0 +1,35 @@
+<%-include('../includes/start.ejs')%>
+<%-include('../includes/nav.ejs')%>
+ category
+ <hr>
+  <% if(categorys.length>0) {%>
+    
+    <ul>
+        <% for (let category of categorys) {%>
+        <li>name: <%= category.name%> </li>
+        <li>Description: <%= category.description%> </li>
+        <li>CreateDate: <%= category.createdAt%> </li>
+        <li>UpdateDate: <%= category.updatedAt%> </li>
+        <br>
+        <form action="/category/details/<%=category.name%>" method="get">
+            <button type="submit">Details</button>
+        </form>
+        <form action="/category/update/<%=category.name%>?edit=true" method="get">
+            <button type="submit">update</button>
+        </form>
+        <form action="/category/delete/<%=category.name%>" method="get">
+            <button type="submit">delete</button>
+        </form>
+        <%}%>
+    </ul>
+    <%} else{%>
+       <h1>no category yet!</h1> 
+        <%}%>
+<form action="/category/add" method="get">
+    <button type="submit">add category</button>
+    </form>
+   
+        
+            
+
+    <%-include('../includes/end.ejs')%>

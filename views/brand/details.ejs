@@ -1,0 +1,15 @@
+<%-include('../includes/start.ejs')%>
+<%-include('../includes/nav.ejs')%>
+
+<% if(brand) {%>
+    
+    <ul>
+        
+        <li>name: <%= brand.name%> </li>
+        <li>Description: <%= brand.description%> </li>
+        <li>CreateDate: <%= brand.createdAt%> </li>
+        <li>showNbCars: <%= brand.showNbCars%></li>
+        <li>UpdateDate: <%= brand.updatedAt%> </li>
+    </ul>
+    <%}%>
+    <%-include('../includes/end.ejs')%>
